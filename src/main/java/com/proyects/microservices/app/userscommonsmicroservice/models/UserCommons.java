@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class UserCommons implements Serializable{
 
 	private static final long serialVersionUID = 6920604792336801906L;
 	
@@ -26,19 +26,14 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "enabled")
-	private boolean enabled;
-	
-	@Column(name = "userName", unique = true, length = 20)
+	@Column(name = "user_name", unique = true, length = 20)
 	private String userName;
 	
 	@Column(name = "password", length = 60)
 	private String password;
 	
-	@Column(name = "name")
+	private boolean enabled;
 	private String name;
-	
-	@Column(name = "surName")
 	private String surName;
 	
 	@Column(name = "email", unique = true, length = 100)
@@ -66,28 +61,12 @@ public class User implements Serializable{
 		this.enabled = enabled;
 	}
 
-	public String getName() {
-		return userName;
-	}
-
-	public void setName(String name) {
-		this.userName = name;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getSurName() {
@@ -114,4 +93,20 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }
